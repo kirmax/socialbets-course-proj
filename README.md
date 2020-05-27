@@ -1,5 +1,5 @@
 # tiktokbets-course-proj
-## Course project for Web development on ASP.NET Core based on TikTok
+## Course project for Web development with ASP.NET Core based on TikTok
 ### Main page
   - Create battle
       - Title
