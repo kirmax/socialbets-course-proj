@@ -12,10 +12,10 @@
   - Registration form on the right side
 ### Profile
   - Info page
-      - * Picture
-      - * Firstname
-      - * Lastname
-      - * Age (Birth date)
+      - Picture *
+      - Firstname *
+      - Lastname *
+      - Age * (Birth date)
       - City
       - Country
   - Money page
