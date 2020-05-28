@@ -1,16 +1,26 @@
 # tiktokbets-course-proj
-## Course project for Web development with ASP.NET Core based on TikTok and maybe Instagram
+## Course project for Web development with ASP.NET Core using on TikTok and maybe Instagram API
 ### Main page
-  - Create battle
-      - Title
-      - Link for your video in tiktok || Link for inst post
-      - Set the bet
-      - Button "Accept"
+  - Create battle button
   - List of battles
   - Sort by social net
+### Create battle page 
+  - Title (readonly)
+  - Link for your video in tiktok || Link for inst post
+    * Battle type detection in code based on given link
+  - Set the bet
+  - Set the time
+  - Button "Accept"
+### Battle item page
+  - Title ("Battle #000000(random unique number)")
+  - 2 competetive posts
+  - Two Bets + sum of bets
+  - ?Likes count above each post
+  - Time left to check the winner (Changes to username of the winner when time == 0)
 ### Auth and Registration page
   - Login form on the left side
   - Registration form on the right side
+  - Vertical line between
 ### Profile
   - Info page
       - Picture *
@@ -25,10 +35,12 @@
       - Money statistics (+ and -)
 ### My battles
   - Current battles (list)
-  - Statistics
+  - Battles statistics
 ### About page
   - Text about site
   - Terms and conditions of usage this website
+
+
 
 ### Each battle
   - TikTok embedded video || Insta post
