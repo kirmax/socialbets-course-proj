@@ -1,4 +1,4 @@
-# tiktokbets-course-proj
+# socialbets-course-proj
 ## Course project for Web development with ASP.NET Core using on TikTok and maybe Instagram API
 ### Main page
   - Create battle button
