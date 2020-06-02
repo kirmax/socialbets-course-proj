@@ -1,5 +1,7 @@
 # socialbets-course-proj
 ## Course project for Web development with ASP.NET Core using on TikTok and maybe Instagram API
+
+##Technical Task
 ### Main page
   - Create battle button
   - List of battles
@@ -49,3 +51,9 @@
   - Text label with each bet and their sum
   
  
+##Other info
+|--------------------------------------------------------------------------|
+|This project on [Sqldbm](https://app.sqldbm.com/SQLServer/Edit/p114193/)  |
+|--------------------------------------------------------------------------|
+|This project on [Trello](https://trello.com/b/I8ERJWQH/socialbets)        |
+|--------------------------------------------------------------------------|
