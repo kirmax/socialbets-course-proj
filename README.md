@@ -2,6 +2,9 @@
 ## Course project for Web development with ASP.NET Core using on TikTok and maybe Instagram API
 
 ## Technical Task
+Architecture type: Onion
+
+
 ### Main page
   - Create battle button
   - List of battles
@@ -50,8 +53,9 @@
   - Bet button for second user
   - Text label with each bet and their sum
   
+  
  
-|                              Other info                                  |
+|                              Other links                                 |
 |--------------------------------------------------------------------------|
 |This project on [Sqldbm](https://app.sqldbm.com/SQLServer/Edit/p114193/)  |
 |This project on [Trello](https://trello.com/b/I8ERJWQH/socialbets)        |
