@@ -4,7 +4,6 @@
 ## Technical Task
 Architecture type: Onion
 
-
 ### Main page
   - Create battle button
   - List of battles
@@ -35,9 +34,9 @@ Architecture type: Onion
       - City
       - Country
   - Money page
-      - Add money
-      - Get money
-      - Money statistics (+ and -)
+      - Pay money for points
+      - Convert points to money
+      - Points statistics (+ and -)
 ### My battles
   - Current battles (list)
   - Battles statistics
