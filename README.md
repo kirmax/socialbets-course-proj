@@ -1,5 +1,9 @@
 # socialbets-course-proj
 ## Course project for Web development with ASP.NET Core using on TikTok and maybe Instagram API
+
+## Technical Task
+Architecture type: Onion
+
 ### Main page
   - Create battle button
   - List of battles
@@ -30,9 +34,9 @@
       - City
       - Country
   - Money page
-      - Add money
-      - Get money
-      - Money statistics (+ and -)
+      - Pay money for points
+      - Convert points to money
+      - Points statistics (+ and -)
 ### My battles
   - Current battles (list)
   - Battles statistics
@@ -48,4 +52,10 @@
   - Bet button for second user
   - Text label with each bet and their sum
   
+  
  
+|                              Other links                                 |
+|--------------------------------------------------------------------------|
+|This project on [Sqldbm](https://app.sqldbm.com/SQLServer/Edit/p114193/)  |
+|This project on [Trello](https://trello.com/b/I8ERJWQH/socialbets)        |
+
