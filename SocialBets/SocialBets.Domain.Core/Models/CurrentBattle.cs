@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SocialBets.Domain.Core
+using SocialBets.Domain.Core.Interfaces;
+
+namespace SocialBets.Domain.Core.Models
 {
-    class Battle
+    class CurrentBattle : IEntity<int>, IBattle
     {
     }
 }

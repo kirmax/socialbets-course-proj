@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SocialBets.Domain.Interfaces.Models
+namespace SocialBets.Domain.Core.Interfaces
 {
     interface IBattle
     {
+        public DateTime TimeOfBattle { get; set; }
+        public decimal Bet { get; set; }
+        public SocialNetwork SocialNetworkId { get; set; }
     }
 }

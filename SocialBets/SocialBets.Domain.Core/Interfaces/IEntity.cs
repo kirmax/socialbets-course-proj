@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SocialBets.Domain.Interfaces.Database
+namespace SocialBets.Domain.Core.Interfaces
 {
-    interface IEntity<T>
+    public interface IEntity<T>
         where T : struct
     {
         public T Id { get; set; }
