@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SocialBets.Domain.Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
