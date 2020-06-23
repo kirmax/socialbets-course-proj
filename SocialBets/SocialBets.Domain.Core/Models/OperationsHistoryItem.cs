@@ -9,6 +9,6 @@ namespace SocialBets.Domain.Core.Models
     {
         public int Id { get; set; }
         public int OperationMoney { get; set; }
-        public Operation OperationId { get; set; }
+        public OperationType OperationTypeId { get; set; }
     }
 }

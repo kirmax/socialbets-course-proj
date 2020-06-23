@@ -11,7 +11,7 @@ namespace SocialBets.Domain.Core.Models
         Income, Withdrawal, Bet
     }*/
 
-    class Operation : IEntity<int>
+    class OperationType : IEntity<int>
     {
         public int Id { get; set; }
         public string Type { get; set; }
