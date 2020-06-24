@@ -9,6 +9,12 @@ namespace SocialBets.Infrastructure.DataAccess.Repositories
 {
     class BattlesHistoryRepository : IRepository<BattleHistoryItem, int>
     {
+        private readonly ApplicationDbContext _dbContext;
+        public BattlesHistoryRepository(ApplicationDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
         public Task Add(BattleHistoryItem entity)
         {
             throw new NotImplementedException();
