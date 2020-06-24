@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SocialBets.Domain.Core.Models
 {
-    class User : IdentityUser
+    public class User : IdentityUser
     {
         public string ImagePath { get; set; }
         public MoneyAccount MoneyAccountId { get; set; }

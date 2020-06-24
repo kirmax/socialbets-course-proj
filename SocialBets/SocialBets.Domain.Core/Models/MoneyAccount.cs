@@ -6,7 +6,7 @@ using SocialBets.Domain.Core.Interfaces;
 
 namespace SocialBets.Domain.Core.Models
 {
-    class MoneyAccount : IEntity<int>
+    public class MoneyAccount : IEntity<int>
     {
         public int Id { get; set; }
         public decimal Money { get; set; }

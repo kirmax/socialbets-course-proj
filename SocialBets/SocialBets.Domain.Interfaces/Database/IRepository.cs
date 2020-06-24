@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace SocialBets.Domain.Interfaces.Database
 {
-    interface IRepository<TEntity, TId> 
+    public interface IRepository<TEntity, TId> 
         where TEntity : class
         where TId : struct
     {

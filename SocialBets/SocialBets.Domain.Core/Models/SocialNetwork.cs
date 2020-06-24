@@ -10,7 +10,7 @@ namespace SocialBets.Domain.Core.Models
     {
         TikTok, Instagram
     }*/
-    class SocialNetwork : IEntity<int>
+    public class SocialNetwork : IEntity<int>
     {
         public int Id { get; set; }
         public string Type { get; set; }

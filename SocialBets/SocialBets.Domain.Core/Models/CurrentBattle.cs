@@ -6,7 +6,7 @@ using SocialBets.Domain.Core.Interfaces;
 
 namespace SocialBets.Domain.Core.Models
 {
-    class CurrentBattle : IEntity<Guid>, IBattle
+    public class CurrentBattle : IEntity<Guid>, IBattle
     {
         public Guid Id { get; set; }
         public DateTime TimeOfBattle { get; set; }
