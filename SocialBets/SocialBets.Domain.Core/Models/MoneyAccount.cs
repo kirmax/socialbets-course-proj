@@ -10,5 +10,6 @@ namespace SocialBets.Domain.Core.Models
     {
         public int Id { get; set; }
         public decimal Money { get; set; }
+        public OperationsHistoryItem OperationsHistory { get; set; }
     }
 }
