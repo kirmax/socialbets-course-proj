@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -25,5 +26,40 @@ namespace SocialBets.Infrastructure.DataAccess
         public DbSet<Statistics> Statistics { get; set; }
 
 
+        //Database Inizializer
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<SocialNetwork>().HasData(
+                    new SocialNetwork[]
+                    {
+                        new SocialNetwork
+                        {
+                            Id = 1,
+                            Type = "TikTok"
+                        },
+                        new SocialNetwork
+                        {
+                            Id = 2,
+                            Type = "Instagram"
+                        }
+                    }
+                );
+
+            builder.Entity<OperationType>().HasData(
+                    new OperationType[]
+                    {
+                        new OperationType
+                        {
+                            Id = 1,
+                            Type = "Debit"
+                        },
+                        new OperationType
+                        {
+                            Id = 2,
+                            Type = "Credit"
+                        }
+                    }
+                );
+        }
     }
 }
