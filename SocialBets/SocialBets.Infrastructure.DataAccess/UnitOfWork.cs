@@ -8,7 +8,7 @@ namespace SocialBets.Infrastructure.DataAccess
     public class UnitOfWork : IUnitOfWork               //https://medium.com/@chathuranga94/unit-of-work-for-asp-net-core-706e71abc9d1
     {
         public ApplicationDbContext dbContext { get; set; }
-        public IRepository<BattleHistoryItem, int> BattleHistoryRepository { get { return BattleHistoryRepository } private set 
+        public IRepository<BattleHistoryItem, int> BattleHistoryRepository { get { return BattleHistoryRepository; } private set 
             {
                 if (BattleHistoryRepository is null)
                     BattleHistoryRepository = new BattlesHistoryRepository(dbContext);

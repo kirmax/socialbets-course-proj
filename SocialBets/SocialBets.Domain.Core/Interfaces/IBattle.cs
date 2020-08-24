@@ -9,6 +9,6 @@ namespace SocialBets.Domain.Core.Interfaces
     {
         public DateTime TimeOfBattle { get; set; }
         public decimal Bet { get; set; }
-        public SocialNetwork SocialNetworkId { get; set; }
+        public SocialNetwork SocialNetwork { get; set; }
     }
 }

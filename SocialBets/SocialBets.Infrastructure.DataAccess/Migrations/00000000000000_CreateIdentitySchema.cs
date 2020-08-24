@@ -22,7 +22,7 @@ namespace SocialBets.Data.Migrations
                     table.PrimaryKey("PK_AspNetRoles", x => x.Id);
                 });
 
-            migrationBuilder.CreateTable(
+            /*migrationBuilder.CreateTable(
                 name: "AspNetUsers",
                 columns: table => new
                 {
@@ -45,7 +45,7 @@ namespace SocialBets.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
+                });*/
 
             migrationBuilder.CreateTable(
                 name: "AspNetRoleClaims",

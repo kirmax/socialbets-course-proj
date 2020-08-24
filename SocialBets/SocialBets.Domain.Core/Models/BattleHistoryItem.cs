@@ -12,7 +12,7 @@ namespace SocialBets.Domain.Core.Models
         public Guid BattleId { get; set; }
         public DateTime TimeOfBattle { get; set; }
         public decimal Bet { get; set; }
-        public SocialNetwork SocialNetworkId { get; set; }
+        public SocialNetwork SocialNetwork { get; set; }
         
     }
 }

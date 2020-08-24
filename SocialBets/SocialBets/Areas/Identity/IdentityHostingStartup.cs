@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using SocialBets.Data;
 
 [assembly: HostingStartup(typeof(SocialBets.Areas.Identity.IdentityHostingStartup))]
 namespace SocialBets.Areas.Identity
