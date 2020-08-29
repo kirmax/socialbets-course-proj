@@ -12,8 +12,8 @@ namespace SocialBets.Domain.Interfaces.Database
         Task Add(TEntity entity);
         Task<TEntity> GetItem(TId id);
         Task<List<TEntity>> GetAll();
-        Task Update(TEntity entity);
-        Task DeleteByItem(TEntity entity);
-        Task DeleteById(TId id);
+        void Update(TEntity entity);
+        void DeleteByItem(TEntity entity);
+        void DeleteById(TId id);
     }
 }

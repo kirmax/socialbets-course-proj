@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace SocialBets.Domain.Interfaces.Database
 {
@@ -14,6 +15,6 @@ namespace SocialBets.Domain.Interfaces.Database
         public IRepository<OperationType, int> OperationTypeRepository { get; }
         public IRepository<SocialNetwork, int> SocialNetworkRepository { get; }
 
-        void Save();
+        Task SaveAsync();
     }
 }
