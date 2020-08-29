@@ -1,7 +1,9 @@
-﻿using SocialBets.Domain.Core.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using SocialBets.Domain.Core.Models;
 using SocialBets.Domain.Interfaces.Database;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,35 +11,46 @@ namespace SocialBets.Infrastructure.DataAccess.Repositories
 {
     class BattlesHistoryRepository : IRepository<BattleHistoryItem, int>
     {
-        private readonly ApplicationDbContext _dbContext;
-        public BattlesHistoryRepository(ApplicationDbContext dbContext)
+        private readonly ApplicationDbContext _ctx;
+        public BattlesHistoryRepository(ApplicationDbContext ctx)
         {
-            _dbContext = dbContext;
+            _ctx = ctx;
         }
 
-        public Task Add(BattleHistoryItem entity)
+        public async Task Add(BattleHistoryItem entity)
         {
-            throw new NotImplementedException();
+            if (entity is null)
+                throw new NullReferenceException();
+            await _ctx.BattleHistory.AddAsync(entity);
+
+            await _ctx.SaveChangesAsync();
         }
 
-        public Task DeleteById(int id)
+        public async Task DeleteByItem(BattleHistoryItem entity)
         {
-            throw new NotImplementedException();
+            if (entity is null)
+                throw new NullReferenceException();
+
+            _ctx.BattleHistory.Remove(entity);
+
+            await _ctx.SaveChangesAsync();
         }
 
-        public Task DeleteByItem(BattleHistoryItem entity)
+        public async Task DeleteById(int id)
         {
-            throw new NotImplementedException();
+            var entity = _ctx.BattleHistory.Find(id);
+
+            await DeleteByItem(entity);
         }
 
-        public Task<List<BattleHistoryItem>> GetAll()
+        public async Task<List<BattleHistoryItem>> GetAll()
         {
-            throw new NotImplementedException();
+            return await _ctx.BattleHistory.ToListAsync();
         }
 
-        public Task<BattleHistoryItem> GetItem(int id)
+        public async Task<BattleHistoryItem> GetItem(int id)
         {
-            throw new NotImplementedException();
+            return await _ctx.BattleHistory.FindAsync(id);
         }
 
         public Task Update(BattleHistoryItem entity)
