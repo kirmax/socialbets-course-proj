@@ -1,4 +1,5 @@
-﻿using SocialBets.Domain.Core.Models;
+﻿using Microsoft.AspNetCore.Identity;
+using SocialBets.Domain.Core.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,7 +15,8 @@ namespace SocialBets.Domain.Interfaces.Database
         public IRepository<OperationsHistoryItem, int> OperationsHistoryRepository { get; }
         public IRepository<OperationType, int> OperationTypeRepository { get; }
         public IRepository<SocialNetwork, int> SocialNetworkRepository { get; }
-
+        public UserManager<ApplicationUser> UserManager { get; }
+        public RoleManager<IdentityRole<int>> RoleManager { get;}
         Task SaveAsync();
     }
 }
