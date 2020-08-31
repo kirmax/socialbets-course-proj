@@ -1,4 +1,5 @@
-﻿using SocialBets.Domain.Core.Models;
+﻿using Microsoft.AspNetCore.Identity;
+using SocialBets.Domain.Core.Models;
 using SocialBets.Domain.Interfaces.Database;
 using SocialBets.Infrastructure.DataAccess.Repositories;
 using System;
@@ -8,25 +9,36 @@ namespace SocialBets.Infrastructure.DataAccess
 {
     public class UnitOfWork : IUnitOfWork, IAsyncDisposable          //https://medium.com/@chathuranga94/unit-of-work-for-asp-net-core-706e71abc9d1
     {
-        private ApplicationDbContext _ctx { get; set; }
-        public UnitOfWork(ApplicationDbContext ctx)
+        private readonly ApplicationDbContext _ctx;
+
+        public IRepository<BattleHistoryItem, int> BattleHistoryRepository { get; }
+        public IRepository<CurrentBattle, int> CurrentBattleRepository { get; }
+        public IRepository<MoneyAccount, int> MoneyAccountRepository { get; }
+        public IRepository<OperationsHistoryItem, int> OperationsHistoryRepository { get; }
+        public IRepository<OperationType, int> OperationTypeRepository { get; }
+        public IRepository<SocialNetwork, int> SocialNetworkRepository { get; }
+        public IRepository<Statistics, int> StatisticsRepository { get; }
+        public IRepository<UserInfo, int> UserInfoRepository { get; }
+        public UserManager<ApplicationUser> UserManager { get; }
+        public RoleManager<IdentityRole<int>> RoleManager { get; }
+
+
+        public UnitOfWork(ApplicationDbContext ctx, UserManager<ApplicationUser> UserManager, RoleManager<IdentityRole<int>> RoleManager)
         {
             _ctx = ctx;
+
+            BattleHistoryRepository = new DbRepository<BattleHistoryItem>(_ctx);
+            CurrentBattleRepository = new DbRepository<CurrentBattle>(_ctx);
+            MoneyAccountRepository = new DbRepository<MoneyAccount>(_ctx);
+            OperationsHistoryRepository = new DbRepository<OperationsHistoryItem>(_ctx);
+            OperationTypeRepository = new DbRepository<OperationType>(_ctx);
+            SocialNetworkRepository = new DbRepository<SocialNetwork>(_ctx);
+            StatisticsRepository = new DbRepository<Statistics>(_ctx);
+            UserInfoRepository = new DbRepository<UserInfo>(_ctx);
+            this.UserManager = UserManager;
+            this.RoleManager = RoleManager;
+
         }
-        public IRepository<BattleHistoryItem, int> BattleHistoryRepository
-        {
-            get { return BattleHistoryRepository; }
-            private set
-            {
-                if (BattleHistoryRepository is null)
-                    BattleHistoryRepository = new BattlesHistoryRepository(_ctx);
-            }
-        }
-        public IRepository<CurrentBattle, int> CurrentBattleRepository { get; private set; }
-        public IRepository<MoneyAccount, int> MoneyAccountRepository { get; private set; }
-        public IRepository<OperationsHistoryItem, int> OperationsHistoryRepository { get; private set; }
-        public IRepository<OperationType, int> OperationTypeRepository { get; private set; }
-        public IRepository<SocialNetwork, int> SocialNetworkRepository { get; private set; }
 
         public async Task SaveAsync()
         {
@@ -37,5 +49,6 @@ namespace SocialBets.Infrastructure.DataAccess
         {
             await _ctx.DisposeAsync();
         }
+
     }
 }
