@@ -6,9 +6,8 @@ using System.Text;
 
 namespace SocialBets.Domain.Core.Models
 {
-    public class ApplicationUser : IdentityUser
+    public class ApplicationUser : IdentityUser<int>
     {
-        
         public string ImagePath { get; set; }
         public MoneyAccount MoneyAccount { get; set; }
         public UserInfo UserInfo { get; set; }
