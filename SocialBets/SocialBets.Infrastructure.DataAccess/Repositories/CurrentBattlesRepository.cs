@@ -14,12 +14,12 @@ namespace SocialBets.Infrastructure.DataAccess.Repositories
             throw new NotImplementedException();
         }
 
-        public Task DeleteById(Guid id)
+        public void DeleteById(Guid id)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteByItem(CurrentBattle entity)
+        public void DeleteByItem(CurrentBattle entity)
         {
             throw new NotImplementedException();
         }
@@ -34,7 +34,7 @@ namespace SocialBets.Infrastructure.DataAccess.Repositories
             throw new NotImplementedException();
         }
 
-        public Task Update(CurrentBattle entity)
+        public void Update(CurrentBattle entity)
         {
             throw new NotImplementedException();
         }

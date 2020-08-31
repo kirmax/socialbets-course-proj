@@ -26,21 +26,19 @@ namespace SocialBets.Infrastructure.DataAccess.Repositories
             await _ctx.SaveChangesAsync();
         }
 
-        public async Task DeleteByItem(BattleHistoryItem entity)
+        public void DeleteByItem(BattleHistoryItem entity)
         {
             if (entity is null)
                 throw new NullReferenceException();
 
             _ctx.BattleHistory.Remove(entity);
-
-            await _ctx.SaveChangesAsync();
         }
 
-        public async Task DeleteById(int id)
+        public void DeleteById(int id)
         {
             var entity = _ctx.BattleHistory.Find(id);
 
-            await DeleteByItem(entity);
+            DeleteByItem(entity);
         }
 
         public async Task<List<BattleHistoryItem>> GetAll()
@@ -53,7 +51,7 @@ namespace SocialBets.Infrastructure.DataAccess.Repositories
             return await _ctx.BattleHistory.FindAsync(id);
         }
 
-        public Task Update(BattleHistoryItem entity)
+        public void Update(BattleHistoryItem entity)
         {
             throw new NotImplementedException();
         }

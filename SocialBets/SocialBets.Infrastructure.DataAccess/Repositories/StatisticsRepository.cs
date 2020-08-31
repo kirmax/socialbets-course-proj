@@ -14,12 +14,12 @@ namespace SocialBets.Infrastructure.DataAccess.Repositories
             throw new NotImplementedException();
         }
 
-        public Task DeleteById(int id)
+        public void DeleteById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task DeleteByItem(Statistics entity)
+        public void DeleteByItem(Statistics entity)
         {
             throw new NotImplementedException();
         }
@@ -34,7 +34,7 @@ namespace SocialBets.Infrastructure.DataAccess.Repositories
             throw new NotImplementedException();
         }
 
-        public Task Update(Statistics entity)
+        public void Update(Statistics entity)
         {
             throw new NotImplementedException();
         }
