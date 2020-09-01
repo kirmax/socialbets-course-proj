@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using System.Text;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
@@ -9,7 +10,7 @@ using SocialBets.Domain.Core.Models;
 
 namespace SocialBets.Infrastructure.DataAccess
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, int>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
@@ -60,6 +61,8 @@ namespace SocialBets.Infrastructure.DataAccess
                         }
                     }
                 );
+
+            base.OnModelCreating(builder);
         }
     }
 }

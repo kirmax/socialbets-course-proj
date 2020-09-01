@@ -5,17 +5,19 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SocialBets.Domain.Interfaces.Database;
+using SocialBets.Infrastructure.DataAccess;
 using SocialBets.Models;
 
 namespace SocialBets.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IUnitOfWork _UoW;
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
         {
-            _logger = logger;
         }
 
         public IActionResult Index()

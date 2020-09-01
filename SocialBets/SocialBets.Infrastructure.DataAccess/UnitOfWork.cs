@@ -20,10 +20,10 @@ namespace SocialBets.Infrastructure.DataAccess
         public IRepository<Statistics, int> StatisticsRepository { get; }
         public IRepository<UserInfo, int> UserInfoRepository { get; }
         public UserManager<ApplicationUser> UserManager { get; }
-        public RoleManager<IdentityRole<int>> RoleManager { get; }
+        public RoleManager<ApplicationRole> RoleManager { get; }
 
 
-        public UnitOfWork(ApplicationDbContext ctx, UserManager<ApplicationUser> UserManager, RoleManager<IdentityRole<int>> RoleManager)
+        public UnitOfWork(ApplicationDbContext ctx, UserManager<ApplicationUser> UserManager, RoleManager<ApplicationRole> RoleManager)
         {
             _ctx = ctx;
 
