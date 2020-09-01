@@ -16,8 +16,9 @@ namespace SocialBets.Controllers
         private readonly IUnitOfWork _UoW;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IUnitOfWork UoW)
         {
+            _UoW = UoW;
         }
 
         public IActionResult Index()
