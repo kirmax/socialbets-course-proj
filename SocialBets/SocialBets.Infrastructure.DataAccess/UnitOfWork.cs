@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SocialBets.Infrastructure.DataAccess
 {
-    public class UnitOfWork : IUnitOfWork, IAsyncDisposable          //https://medium.com/@chathuranga94/unit-of-work-for-asp-net-core-706e71abc9d1
+    public class UnitOfWork : IUnitOfWork        //https://medium.com/@chathuranga94/unit-of-work-for-asp-net-core-706e71abc9d1
     {
         private readonly ApplicationDbContext _ctx;
 
@@ -43,11 +43,6 @@ namespace SocialBets.Infrastructure.DataAccess
         public async Task SaveAsync()
         {
             await _ctx.SaveChangesAsync();
-        }
-
-        public async ValueTask DisposeAsync()
-        {
-            await _ctx.DisposeAsync();
         }
 
     }
