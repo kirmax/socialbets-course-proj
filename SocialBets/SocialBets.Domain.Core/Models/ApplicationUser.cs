@@ -12,5 +12,6 @@ namespace SocialBets.Domain.Core.Models
         public MoneyAccount MoneyAccount { get; set; }
         public UserInfo UserInfo { get; set; }
         public Statistics Statistics { get; set; }
+        public List<CurrentBattle> CurrentBattles { get; set; }
     }
 }
