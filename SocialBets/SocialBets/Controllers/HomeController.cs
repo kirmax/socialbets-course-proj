@@ -21,23 +21,28 @@ namespace SocialBets.Controllers
         {
             _unitOfWork = unitOfWork;
             _unitOfWork.UserManager.GetUserAsync(User);
-            
+
         }
 
         public async Task<IActionResult> Index()
         {
+            if (!User.Identity.IsAuthenticated)
+                return View("NonAuthorizedIndex");
+            
             ICollection<CurrentBattle> battles = await _unitOfWork.CurrentBattleRepository.GetAll();
-            return View(battles);
+            return View("Index", battles);
         }
 
 
+        public async Task<IActionResult> Login()
+        {
+            return View();
+        }
 
-
-
-        //public async Task<IActionResult> CreateBattle()
-        //{
-        //    return StatusCode(200);
-        //}
+        public async Task<IActionResult> Registration()
+        {
+            return StatusCode(200);
+        }
 
         public IActionResult Privacy()
         {
