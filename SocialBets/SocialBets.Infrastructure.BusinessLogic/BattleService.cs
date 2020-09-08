@@ -21,9 +21,15 @@ namespace SocialBets.Infrastructure.BusinessLogic
         {
             var battle = await _unitOfWork.CurrentBattleRepository.GetItem(battleId);
 
+            if (user is null)
+                throw new NullReferenceException();
+
             if (battle.SecondPlayer is null)
                 battle.SecondPlayer = user;
 
+            _unitOfWork.CurrentBattleRepository.Update(battle);
+
+            await _unitOfWork.SaveAsync();
         }
 
         public void CancelBattle(Guid battleId)
@@ -41,14 +47,25 @@ namespace SocialBets.Infrastructure.BusinessLogic
             await _unitOfWork.SaveAsync();
         }
 
-        public void StartBattle(Guid battleId)
+        public async Task StartBattle(Guid battleId)
         {
-            throw new NotImplementedException();
+            var battle = await _unitOfWork.CurrentBattleRepository.GetItem(battleId);
+
+            if (battle.SecondPlayer is null)
+                return;
+
+            battle.TimeOfStart = DateTime.Now;
+
+            await _unitOfWork.SaveAsync();
         }
 
-        public void StopBattle(Guid battleId)
+        public async Task StopBattle(Guid battleId)
         {
-            throw new NotImplementedException();
+            var battle = await _unitOfWork.CurrentBattleRepository.GetItem(battleId);
+            if (battle.TimeOfStart < DateTime.Now)
+                return;
+            //if (battle.TimeOfStart. + battle.TimeOfBattle < DateTime.Now)
+            //    return;
         }
     }
 }

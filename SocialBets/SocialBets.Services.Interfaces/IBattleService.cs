@@ -9,9 +9,9 @@ namespace SocialBets.Services.Interfaces
     public interface IBattleService
     {
         Task CreateBattle(CurrentBattle battle);
-        Task AttachToBattle(Guid battleId, int userId);
+        Task AttachToBattle(Guid battleId, ApplicationUser user);
         void CancelBattle(Guid battleId);
-        void StartBattle(Guid battleId);
-        void StopBattle(Guid battleId);
+        Task StartBattle(Guid battleId);
+        Task StopBattle(Guid battleId);
     }
 }
