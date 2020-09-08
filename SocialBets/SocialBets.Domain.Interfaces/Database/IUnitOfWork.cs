@@ -10,7 +10,7 @@ namespace SocialBets.Domain.Interfaces.Database
     public interface IUnitOfWork
     {
         public IRepository<BattleHistoryItem, int> BattleHistoryRepository { get; }
-        public IRepository<CurrentBattle, int> CurrentBattleRepository { get; }
+        public IRepository<CurrentBattle, Guid> CurrentBattleRepository { get; }
         public IRepository<MoneyAccount, int> MoneyAccountRepository { get; }
         public IRepository<OperationsHistoryItem, int> OperationsHistoryRepository { get; }
         public IRepository<OperationType, int> OperationTypeRepository { get; }
