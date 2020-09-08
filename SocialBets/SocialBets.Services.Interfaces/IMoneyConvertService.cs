@@ -9,7 +9,7 @@ namespace SocialBets.Services.Interfaces
     /// Point represent money
     /// </summary>
     
-    interface IMoneyService
+    interface IMoneyConvertService
     {
         void MoneyToPoints();
         void PointsToMoney();
