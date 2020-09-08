@@ -17,15 +17,16 @@ namespace SocialBets.Infrastructure.BusinessLogic
             _unitOfWork = unitOfWork;
         }
 
-        public void AttachToBattle()
+        public async Task AttachToBattle(Guid battleId, ApplicationUser user)
         {
+            var battle = await _unitOfWork.CurrentBattleRepository.GetItem(battleId);
 
-            
-            
-            throw new NotImplementedException();
+            if (battle.SecondPlayer is null)
+                battle.SecondPlayer = user;
+
         }
 
-        public void CancelBattle()
+        public void CancelBattle(Guid battleId)
         {
             throw new NotImplementedException();
         }
@@ -36,14 +37,16 @@ namespace SocialBets.Infrastructure.BusinessLogic
                 throw new ArgumentNullException();
             
             await _unitOfWork.CurrentBattleRepository.Add(battle);
+
+            await _unitOfWork.SaveAsync();
         }
 
-        public void StartBattle()
+        public void StartBattle(Guid battleId)
         {
             throw new NotImplementedException();
         }
 
-        public void StopBattle()
+        public void StopBattle(Guid battleId)
         {
             throw new NotImplementedException();
         }
