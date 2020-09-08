@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SocialBets.Domain.Core.Models;
 using SocialBets.Domain.Interfaces.Database;
 using SocialBets.Infrastructure.DataAccess;
 using SocialBets.Models;
@@ -13,18 +14,30 @@ namespace SocialBets.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IUnitOfWork _UoW;
+        private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger, IUnitOfWork UoW)
+        public HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork)
         {
-            _UoW = UoW;
+            _unitOfWork = unitOfWork;
+            _unitOfWork.UserManager.GetUserAsync(User);
+            
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            ICollection<CurrentBattle> battles = await _unitOfWork.CurrentBattleRepository.GetAll();
+            return View(battles);
         }
+
+
+
+
+
+        //public async Task<IActionResult> CreateBattle()
+        //{
+        //    return StatusCode(200);
+        //}
 
         public IActionResult Privacy()
         {
