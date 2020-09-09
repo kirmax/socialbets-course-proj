@@ -12,13 +12,15 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.7" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.1" />
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
   </ItemGroup>
 
 
   <ItemGroup>
     <ProjectReference Include="..\SocialBets.Domain.Core\SocialBets.Domain.Core.csproj" />
+    <ProjectReference Include="..\SocialBets.Infrastructure.BusinessLogic\SocialBets.Infrastructure.BusinessLogic.csproj" />
     <ProjectReference Include="..\SocialBets.Infrastructure.DataAccess\SocialBets.Infrastructure.DataAccess.csproj" />
+    <ProjectReference Include="..\SocialBets.Services.Interfaces\SocialBets.Services.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>
