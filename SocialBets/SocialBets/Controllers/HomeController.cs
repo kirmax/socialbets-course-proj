@@ -9,18 +9,19 @@ using SocialBets.Domain.Core.Models;
 using SocialBets.Domain.Interfaces.Database;
 using SocialBets.Infrastructure.DataAccess;
 using SocialBets.Models;
+using SocialBets.Services.Interfaces;
 
 namespace SocialBets.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IBattleService _battleService;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork)
+        public HomeController(ILogger<HomeController> logger, IBattleService battleService)
         {
-            _unitOfWork = unitOfWork;
-            _unitOfWork.UserManager.GetUserAsync(User);
+            /*_unitOfWork = unitOfWork;
+            _unitOfWork.UserManager.GetUserAsync(User);*/
 
         }
 
@@ -29,7 +30,7 @@ namespace SocialBets.Controllers
             if (!User.Identity.IsAuthenticated)
                 return View("NonAuthorizedIndex");
             
-            ICollection<CurrentBattle> battles = await _unitOfWork.CurrentBattleRepository.GetAll();
+            ICollection<CurrentBattle> battles = await _battleService.GetBattles();
             return View("Index", battles);
         }
 

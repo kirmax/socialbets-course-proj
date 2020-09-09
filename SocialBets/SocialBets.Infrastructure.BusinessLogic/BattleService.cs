@@ -5,21 +5,33 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using SocialBets.Domain.Core.Models;
+using System.Security.Claims;
 
 namespace SocialBets.Infrastructure.BusinessLogic
 {
-    class BattleService : IBattleService
+    public class BattleService : IBattleService
     {
         private readonly IUnitOfWork _unitOfWork;
+        public bool isStarted { get; set; } = false;
+
 
         public BattleService(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }
 
-        public async Task AttachToBattle(Guid battleId, ApplicationUser user)
+        public async Task<List<CurrentBattle>> GetBattles()
+        {
+            var battles = await _unitOfWork.CurrentBattleRepository.GetAll();
+
+            return battles;
+        }
+
+        public async Task AttachToBattle(Guid battleId, ClaimsPrincipal claimsUser)
         {
             var battle = await _unitOfWork.CurrentBattleRepository.GetItem(battleId);
+
+            var user = await _unitOfWork.UserManager.GetUserAsync(claimsUser);
 
             if (user is null)
                 throw new NullReferenceException();
@@ -57,15 +69,20 @@ namespace SocialBets.Infrastructure.BusinessLogic
             battle.TimeOfStart = DateTime.Now;
 
             await _unitOfWork.SaveAsync();
+
+            isStarted = true;
         }
 
         public async Task StopBattle(Guid battleId)
         {
             var battle = await _unitOfWork.CurrentBattleRepository.GetItem(battleId);
+
             if (battle.TimeOfStart < DateTime.Now)
                 return;
-            //if (battle.TimeOfStart. + battle.TimeOfBattle < DateTime.Now)
-            //    return;
+            if (battle.TimeOfEnd < DateTime.Now)
+                return;
+
+            isStarted = false;
         }
     }
 }

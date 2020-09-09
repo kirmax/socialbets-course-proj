@@ -10,9 +10,9 @@ namespace SocialBets.Domain.Core.Models
     {
         public int Id { get; set; }
         public Guid BattleId { get; set; }
-        public DateTime TimeOfBattle { get; set; }
         public decimal Bet { get; set; }
         public SocialNetwork SocialNetwork { get; set; }
-        
+        public DateTime TimeOfStart { get; set; }
+        public DateTime TimeOfEnd { get; set; }
     }
 }
