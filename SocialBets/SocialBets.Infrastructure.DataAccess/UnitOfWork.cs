@@ -27,14 +27,14 @@ namespace SocialBets.Infrastructure.DataAccess
         {
             _ctx = ctx;
 
-            BattleHistoryRepository = new DbRepository<BattleHistoryItem>(_ctx);
-            CurrentBattleRepository = new DbRepository<CurrentBattle>(_ctx);
-            MoneyAccountRepository = new DbRepository<MoneyAccount>(_ctx);
-            OperationsHistoryRepository = new DbRepository<OperationsHistoryItem>(_ctx);
-            OperationTypeRepository = new DbRepository<OperationType>(_ctx);
-            SocialNetworkRepository = new DbRepository<SocialNetwork>(_ctx);
-            StatisticsRepository = new DbRepository<Statistics>(_ctx);
-            UserInfoRepository = new DbRepository<UserInfo>(_ctx);
+            BattleHistoryRepository = new DbRepository<BattleHistoryItem, int>(_ctx);
+            CurrentBattleRepository = new DbRepository<CurrentBattle, Guid>(_ctx);
+            MoneyAccountRepository = new DbRepository<MoneyAccount, int>(_ctx);
+            OperationsHistoryRepository = new DbRepository<OperationsHistoryItem, int>(_ctx);
+            OperationTypeRepository = new DbRepository<OperationType, int>(_ctx);
+            SocialNetworkRepository = new DbRepository<SocialNetwork, int>(_ctx);
+            StatisticsRepository = new DbRepository<Statistics, int>(_ctx);
+            UserInfoRepository = new DbRepository<UserInfo, int>(_ctx);
             this.UserManager = UserManager;
             this.RoleManager = RoleManager;
 

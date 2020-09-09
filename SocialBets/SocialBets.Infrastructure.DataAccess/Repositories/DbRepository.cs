@@ -9,10 +9,12 @@ using System.Threading.Tasks;
 
 namespace SocialBets.Infrastructure.DataAccess.Repositories
 {
-    class DbRepository<TEntity> : IRepository<TEntity, int> 
+    class DbRepository<TEntity, TKey> : IRepository<TEntity, TKey> 
         where TEntity : class
+        where TKey : struct
     {
         private readonly ApplicationDbContext _ctx;
+
         public DbRepository(ApplicationDbContext ctx)
         {
             _ctx = ctx;
@@ -35,7 +37,7 @@ namespace SocialBets.Infrastructure.DataAccess.Repositories
 
         }
 
-        public void DeleteById(int id)
+        public void DeleteById(TKey id)
         {
             var entity = _ctx.Set<TEntity>().Find(id);
 
@@ -47,7 +49,7 @@ namespace SocialBets.Infrastructure.DataAccess.Repositories
             return await _ctx.Set<TEntity>().ToListAsync();
         }
 
-        public async Task<TEntity> GetItem(int id)
+        public async Task<TEntity> GetItem(TKey id)
         {
             return await _ctx.Set<TEntity>().FindAsync(id);
         }
