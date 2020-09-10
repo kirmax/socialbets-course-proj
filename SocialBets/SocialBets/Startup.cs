@@ -15,6 +15,8 @@ using Microsoft.Extensions.Hosting;
 using SocialBets.Domain.Core.Models;
 using SocialBets.Infrastructure.DataAccess;
 using SocialBets.Domain.Interfaces.Database;
+using SocialBets.Services.Interfaces;
+using SocialBets.Infrastructure.BusinessLogic;
 
 namespace SocialBets
 {
@@ -31,6 +33,8 @@ namespace SocialBets
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            services.AddTransient<IBattleService, BattleService>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(

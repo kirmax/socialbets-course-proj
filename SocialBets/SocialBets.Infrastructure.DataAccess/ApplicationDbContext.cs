@@ -36,12 +36,14 @@ namespace SocialBets.Infrastructure.DataAccess
                         new SocialNetwork
                         {
                             Id = 1,
-                            Type = "TikTok"
+                            Type = "TikTok",
+                            //OembedUrl = "https://www.tiktok.com/oembed?url={url}"
                         },
                         new SocialNetwork
                         {
                             Id = 2,
-                            Type = "Instagram"
+                            Type = "Instagram",
+                            //OembedUrl = "https://graph.facebook.com/v8.0/instagram_oembed?url={url}&access_token=764201374152221|5a64cd45566fc2dcb14838bde136a62d"
                         }
                     }
                 );
