@@ -13,13 +13,15 @@
     color: #fff;
     outline: none !important;
 }
+
     .form-control:focus,
-    .form-control:target{
+    .form-control:target {
         background: #000;
         color: #fff;
         border: 1px solid #2dc997;
         outline: none !important;
     }
+
 body {
     background: black;
     color: #666666;
@@ -41,13 +43,13 @@ a {
     transition: 0.1s;
 }
 
-.a-auth:hover, .a-auth:active, .a-auth:focus {
-    color: #2dca98;
-    outline: none;
-    text-decoration: none;
-    font-size:18px;
-    font-weight:100;
-}
+    .a-auth:hover, .a-auth:active, .a-auth:focus {
+        color: #2dca98;
+        outline: none;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 100;
+    }
 
 p {
     padding: 0;
@@ -559,10 +561,13 @@ body.mobile-nav-active {
     transition: 0.3s;
 }
 
+    .auth:hover #b {
+        background: #2dc997;
+    }
+
     .auth:hover,
     .auth .a-auth:focus .auth .form-control:focus {
         border: 5px solid #2dc997;
-        
     }
 
 .section-header .section-title {
@@ -608,6 +613,22 @@ body.mobile-nav-active {
         padding-top: 15px;
     }
 }
+
+.battleIcon {
+    border-radius: 50px;
+    width: 80px;
+    margin: 0 auto;
+    margin-top: -55px;
+    background: #323232;
+}
+
+#b {
+    transition: 0.3s;
+}
+
+    #b:hover {
+        background: #2DC997;
+    }
 
 #about .about-container p {
     line-height: 26px;
