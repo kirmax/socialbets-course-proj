@@ -1,5 +1,5 @@
 # socialbets-course-proj
-## Course project for Web development with ASP.NET Core using on TikTok and maybe Instagram API
+## Web development course project using ASP.NET Core based on TikTok and Instagram API
 
 ## Technical Task
 Architecture type: Onion
