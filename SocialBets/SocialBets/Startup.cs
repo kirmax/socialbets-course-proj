@@ -17,6 +17,7 @@ using SocialBets.Infrastructure.DataAccess;
 using SocialBets.Domain.Interfaces.Database;
 using SocialBets.Services.Interfaces;
 using SocialBets.Infrastructure.BusinessLogic;
+using static Microsoft.AspNetCore.Identity.UI.V3.Pages.Account.Internal.LoginModel;
 
 namespace SocialBets
 {
@@ -40,10 +41,19 @@ namespace SocialBets
                 options.UseSqlServer(
                     Configuration.GetConnectionString("StepConnection")));
 
+            //services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            //{
+            //    options.SignIn.RequireConfirmedAccount = true;
+            //    options.Password.RequiredLength = 6;
+            //    options.Password.RequireDigit = true;
+            //    options.User.RequireUniqueEmail = true;
+            //}).AddEntityFrameworkStores<ApplicationDbContext>();
+
             services.AddIdentity<ApplicationUser, ApplicationRole>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            
-            
+
+
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

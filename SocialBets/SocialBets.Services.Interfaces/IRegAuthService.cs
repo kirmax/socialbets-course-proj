@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SocialBets.Services.Interfaces
 {
-    interface IRegAuthService
+   public interface IRegAuthService
     {
         bool RegUser();
         bool AuthUser();

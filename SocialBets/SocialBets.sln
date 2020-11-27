@@ -11,15 +11,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{D5DB3E7A-906B-497B-BBC8-0D99504E6056}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialBets.Domain.Core", "SocialBets.Domain.Core\SocialBets.Domain.Core.csproj", "{43E779D9-7527-4445-808B-97B7524A3E4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialBets.Domain.Core", "SocialBets.Domain.Core\SocialBets.Domain.Core.csproj", "{43E779D9-7527-4445-808B-97B7524A3E4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialBets.Domain.Interfaces", "SocialBets.Domain.Interfaces\SocialBets.Domain.Interfaces.csproj", "{997464A2-C21C-42EF-B939-42AD5B007214}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialBets.Domain.Interfaces", "SocialBets.Domain.Interfaces\SocialBets.Domain.Interfaces.csproj", "{997464A2-C21C-42EF-B939-42AD5B007214}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialBets.Infrastructure.BusinessLogic", "SocialBets.Infrastructure.BusinessLogic\SocialBets.Infrastructure.BusinessLogic.csproj", "{42B87CD6-CB86-4207-9415-0B1419D72FF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialBets.Infrastructure.BusinessLogic", "SocialBets.Infrastructure.BusinessLogic\SocialBets.Infrastructure.BusinessLogic.csproj", "{42B87CD6-CB86-4207-9415-0B1419D72FF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialBets.Infrastructure.DataAccess", "SocialBets.Infrastructure.DataAccess\SocialBets.Infrastructure.DataAccess.csproj", "{EA078B7E-25DA-4B18-A651-CFB007CA1C24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialBets.Infrastructure.DataAccess", "SocialBets.Infrastructure.DataAccess\SocialBets.Infrastructure.DataAccess.csproj", "{EA078B7E-25DA-4B18-A651-CFB007CA1C24}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialBets.Services.Interfaces", "SocialBets.Services.Interfaces\SocialBets.Services.Interfaces.csproj", "{9AB6C8BA-A92F-4155-8EB0-BB46926AC194}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialBets.Services.Interfaces", "SocialBets.Services.Interfaces\SocialBets.Services.Interfaces.csproj", "{9AB6C8BA-A92F-4155-8EB0-BB46926AC194}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
