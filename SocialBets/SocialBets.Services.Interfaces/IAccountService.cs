@@ -10,7 +10,8 @@ namespace SocialBets.Services.Interfaces
    public interface IAccountService
     {
         Task<IdentityResult> Register(ApplicationUser user);
-        Task<bool> Login(ApplicationUser user);
+        Task<SignInResult> Login(ApplicationUser user, bool isRememberMeEnabled);
+        Task Logout();
         Task<bool> isUserExists(ApplicationUser user);
         Task<bool> ResetPassword(ApplicationUser user);
     }

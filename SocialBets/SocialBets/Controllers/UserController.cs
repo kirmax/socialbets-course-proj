@@ -39,9 +39,22 @@ namespace SocialBets.Controllers
                     Password = loginModel.Input.Password
                 };
 
-                var loginResult = await _accountService.Login(user);
+                var loginResult = await _accountService.Login(user, loginModel.Input.RememberMe);
+
+                if (loginResult.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
             }
+
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _accountService.Logout();
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult Register()
@@ -62,7 +75,7 @@ namespace SocialBets.Controllers
 
                 var regResult = await _accountService.Register(user);
 
-                if(regResult.Succeeded)
+                if (regResult.Succeeded)
                 {
                     return RedirectToAction("Index", "Home");
                 }

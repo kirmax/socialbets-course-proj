@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.Web;
+using Microsoft.AspNetCore.Identity;
 using SocialBets.Domain.Core.Models;
 using SocialBets.Domain.Interfaces.Database;
 using SocialBets.Services.Interfaces;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 
 namespace SocialBets.Infrastructure.BusinessLogic
 {
@@ -14,9 +16,15 @@ namespace SocialBets.Infrastructure.BusinessLogic
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<bool> Login(ApplicationUser user)
+        public async Task<SignInResult> Login(ApplicationUser user, bool isRememberMeEnabled)
         {
-            return true;
+            var result = await _unitOfWork.SignInManager.PasswordSignInAsync(user, user.Password, isRememberMeEnabled, false);
+            return result;
+        }
+
+        public async Task Logout()
+        {
+            await _unitOfWork.SignInManager.SignOutAsync();
         }
 
         public async Task<IdentityResult> Register(ApplicationUser user)
@@ -47,6 +55,5 @@ namespace SocialBets.Infrastructure.BusinessLogic
                          await _unitOfWork.UserManager.FindByEmailAsync(user.Email);
             return result != null;
         }
-
     }
 }
