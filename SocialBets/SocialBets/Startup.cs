@@ -3,12 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
-using SocialBets.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -17,7 +13,6 @@ using SocialBets.Infrastructure.DataAccess;
 using SocialBets.Domain.Interfaces.Database;
 using SocialBets.Services.Interfaces;
 using SocialBets.Infrastructure.BusinessLogic;
-using static Microsoft.AspNetCore.Identity.UI.V3.Pages.Account.Internal.LoginModel;
 
 namespace SocialBets
 {
@@ -36,10 +31,11 @@ namespace SocialBets
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddTransient<IBattleService, BattleService>();
+            services.AddTransient<IAccountService, AccountService>();
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("StepConnection")));
+                    Configuration.GetConnectionString("DefaultConnection")));
 
             //services.AddIdentity<ApplicationUser, IdentityRole>(options =>
             //{
@@ -49,10 +45,12 @@ namespace SocialBets
             //    options.User.RequireUniqueEmail = true;
             //}).AddEntityFrameworkStores<ApplicationDbContext>();
 
-            services.AddIdentity<ApplicationUser, ApplicationRole>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
-
-
+            services.AddIdentity<ApplicationUser, ApplicationRole>(options =>
+            {
+                options.SignIn.RequireConfirmedAccount = true;
+                options.User.RequireUniqueEmail = true;
+            })
+            .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddControllersWithViews();
             services.AddRazorPages();

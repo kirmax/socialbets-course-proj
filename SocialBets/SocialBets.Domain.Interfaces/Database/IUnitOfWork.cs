@@ -16,6 +16,7 @@ namespace SocialBets.Domain.Interfaces.Database
         public IRepository<OperationType, int> OperationTypeRepository { get; }
         public IRepository<SocialNetwork, int> SocialNetworkRepository { get; }
         public UserManager<ApplicationUser> UserManager { get; }
+        public SignInManager<ApplicationUser> SignInManager { get; }
         public RoleManager<ApplicationRole> RoleManager { get;}
         Task SaveAsync();
     }

@@ -15,12 +15,12 @@ namespace SocialBets.Controllers
     [Authorize]
     public class BattleController : Controller
     {
-        //private readonly IUnitOfWork _unitOfWork;
         private readonly IBattleService _battleService;
         private readonly ILogger<BattleController> _logger;
-        public BattleController(IBattleService battleService, ILogger<BattleController> _logger)
+        public BattleController(IBattleService battleService, ILogger<BattleController> logger)
         {
             _battleService = battleService;
+            _logger = logger;
         }
 
         // GET: Battle

@@ -17,15 +17,14 @@ namespace SocialBets.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IBattleService _battleService;
         private readonly ILogger<HomeController> _logger;
+        private readonly IBattleService _battleService;
+
 
         public HomeController(ILogger<HomeController> logger, IBattleService battleService)
         {
-            //this._signManager = signManager;
-            /*_unitOfWork = unitOfWork;
-            _unitOfWork.UserManager.GetUserAsync(User);*/
-
+            _logger = logger;
+            _battleService = battleService;
         }
         
         public async Task<IActionResult> Index()
@@ -36,32 +35,7 @@ namespace SocialBets.Controllers
             ICollection<CurrentBattle> battles = await _battleService.GetBattles();
             return View("Index", battles);
         }
-
-        public async Task<IActionResult> NonAuthorizedIndex()
-        {
-           
-            return View();
-        }
-        public async Task<IActionResult> Login()
-        {
-            return View();
-        }
-
-        public async Task<IActionResult> Register()
-        {
-            // return StatusCode(200);
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> Register(RegisterModel vm)
-        {
-            // return StatusCode(200);
-            
-            var a = ModelState;
-            ApplicationUser user = new ApplicationUser();
-            
-            return View();
-        }
+       
         public IActionResult Privacy()
         {
             return View();

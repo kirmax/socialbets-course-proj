@@ -20,10 +20,11 @@ namespace SocialBets.Infrastructure.DataAccess
         public IRepository<Statistics, int> StatisticsRepository { get; }
         public IRepository<UserInfo, int> UserInfoRepository { get; }
         public UserManager<ApplicationUser> UserManager { get; }
+        public SignInManager<ApplicationUser> SignInManager { get; }
         public RoleManager<ApplicationRole> RoleManager { get; }
 
 
-        public UnitOfWork(ApplicationDbContext ctx, UserManager<ApplicationUser> UserManager, RoleManager<ApplicationRole> RoleManager)
+        public UnitOfWork(ApplicationDbContext ctx, UserManager<ApplicationUser> UserManager, RoleManager<ApplicationRole> RoleManager, SignInManager<ApplicationUser> SignInManager)
         {
             _ctx = ctx;
 
@@ -37,7 +38,7 @@ namespace SocialBets.Infrastructure.DataAccess
             UserInfoRepository = new DbRepository<UserInfo, int>(_ctx);
             this.UserManager = UserManager;
             this.RoleManager = RoleManager;
-
+            this.SignInManager = SignInManager;
         }
 
         public async Task SaveAsync()
