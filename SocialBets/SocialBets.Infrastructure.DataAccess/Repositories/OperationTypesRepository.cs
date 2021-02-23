@@ -1,40 +1,40 @@
-﻿using System;
+﻿using SocialBets.Domain.Core.Models;
+using SocialBets.Domain.Interfaces.Database;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using SocialBets.Domain.Core.Models;
-using SocialBets.Domain.Interfaces.Database;
 
 namespace SocialBets.Infrastructure.DataAccess.Repositories
 {
-    class CurrentBattlesRepository : IRepository<CurrentBattle, Guid>
+    class OperationTypesRepository : IRepository<OperationType, int>
     {
-        public Task Add(CurrentBattle entity)
+        public Task Add(OperationType entity)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteById(Guid id)
+        public void DeleteById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void DeleteByItem(CurrentBattle entity)
+        public void DeleteByItem(OperationType entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<CurrentBattle>> GetAll()
+        public Task<List<OperationType>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Task<CurrentBattle> GetItem(Guid id)
+        public Task<OperationType> GetItem(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(CurrentBattle entity)
+        public void Update(OperationType entity)
         {
             throw new NotImplementedException();
         }

@@ -3,26 +3,39 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using SocialBets.Areas.Identity.Pages.Account;
+using SocialBets.Domain.Core.Models;
+using SocialBets.Domain.Interfaces.Database;
+using SocialBets.Infrastructure.DataAccess;
 using SocialBets.Models;
+using SocialBets.Services.Interfaces;
 
 namespace SocialBets.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IBattleService _battleService;
 
-        public HomeController(ILogger<HomeController> logger)
+
+        public HomeController(ILogger<HomeController> logger, IBattleService battleService)
         {
             _logger = logger;
+            _battleService = battleService;
         }
-
-        public IActionResult Index()
+        
+        public async Task<IActionResult> Index()
         {
-            return View();
+            if (!User.Identity.IsAuthenticated)
+                return View("NonAuthorizedIndex");
+            
+            ICollection<CurrentBattle> battles = await _battleService.GetBattles();
+            return View("Index", battles);
         }
-
+       
         public IActionResult Privacy()
         {
             return View();

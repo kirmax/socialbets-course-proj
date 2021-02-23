@@ -5,15 +5,15 @@ using System.Threading.Tasks;
 
 namespace SocialBets.Domain.Interfaces.Database
 {
-    interface IRepository<TEntity, TId> 
+    public interface IRepository<TEntity, TId> 
         where TEntity : class
         where TId : struct
     {
         Task Add(TEntity entity);
         Task<TEntity> GetItem(TId id);
         Task<List<TEntity>> GetAll();
-        Task Update(TEntity entity);
-        Task DeleteByItem(TEntity entity);
-        Task DeleteById(TId id);
+        void Update(TEntity entity);
+        void DeleteByItem(TEntity entity);
+        void DeleteById(TId id);
     }
 }

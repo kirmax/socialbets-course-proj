@@ -7,8 +7,9 @@ namespace SocialBets.Domain.Core.Interfaces
 {
     interface IBattle
     {
-        public DateTime TimeOfBattle { get; set; }
+        public DateTime TimeOfStart { get; set; }
+        public DateTime TimeOfEnd{ get; set; }
         public decimal Bet { get; set; }
-        public SocialNetwork SocialNetworkId { get; set; }
+        public SocialNetwork SocialNetwork { get; set; }
     }
 }

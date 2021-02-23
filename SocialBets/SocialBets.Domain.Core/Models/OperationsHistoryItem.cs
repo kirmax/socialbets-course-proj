@@ -5,10 +5,10 @@ using System.Text;
 
 namespace SocialBets.Domain.Core.Models
 {
-    class OperationsHistoryItem : IEntity<int>
+    public class OperationsHistoryItem : IEntity<int>
     {
         public int Id { get; set; }
         public int OperationMoney { get; set; }
-        public OperationType OperationTypeId { get; set; }
+        public OperationType OperationType { get; set; }
     }
 }
