@@ -56,7 +56,7 @@ namespace SocialBets.Infrastructure.BusinessLogic
         {
             if (battle is null)
                 throw new ArgumentNullException();
-            
+            battle.Id = Guid.NewGuid();
             await _unitOfWork.CurrentBattleRepository.Add(battle);
 
             await _unitOfWork.SaveAsync();

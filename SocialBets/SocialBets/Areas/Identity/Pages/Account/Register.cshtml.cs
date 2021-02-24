@@ -21,6 +21,8 @@ namespace SocialBets.Areas.Identity.Pages.Account
     public class RegisterModel : PageModel
     {
         private readonly ILogger<RegisterModel> _logger;
+        private SignInManager<ApplicationUser> _signInManager;
+        private UserManager<ApplicationUser> _userManager;
         //private readonly IEmailSender _emailSender;                               //EmailSender throws exception so it have to be registered or email confirmation disabled
 
         public RegisterModel(

@@ -12,7 +12,7 @@ using SocialBets.Services.Interfaces;
 
 namespace SocialBets.Controllers
 {
-    [Authorize]
+   // [Authorize]
     public class BattleController : Controller
     {
         private readonly IBattleService _battleService;
@@ -26,7 +26,8 @@ namespace SocialBets.Controllers
         // GET: Battle
         public IActionResult Add()
         {
-            return View();
+            return View("../../Views/Home/BattleView");
+
         }
 
         [HttpPost]
@@ -34,6 +35,7 @@ namespace SocialBets.Controllers
         {
             try
             {
+
                 await _battleService.CreateBattle(battle);
             }
             catch (Exception ex)
@@ -41,7 +43,7 @@ namespace SocialBets.Controllers
                 _logger.LogError(ex, ex.Message);
             }
 
-            return RedirectToAction("Index", "HomeController");
+            return RedirectToAction("Index", "Home");
         }
 
         //POST: Attach to battle
