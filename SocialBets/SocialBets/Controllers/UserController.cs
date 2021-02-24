@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using SocialBets.Areas.Identity.Pages.Account;
 using SocialBets.Domain.Core.Models;
+using SocialBets.Domain.Interfaces.Database;
 using SocialBets.Services.Interfaces;
 
 namespace SocialBets.Controllers
@@ -12,10 +14,16 @@ namespace SocialBets.Controllers
     public class UserController : Controller
     {
         private readonly IAccountService _accountService;
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly ILogger<RegisterModel> _regLogger;
+        private readonly ILogger<LoginModel> _loginLogger;
 
-        public UserController(IAccountService accountService)
+        public UserController(IAccountService accountService, IUnitOfWork unitOfWork, ILogger<RegisterModel> regLogger, ILogger<LoginModel> loginLogger)
         {
             _accountService = accountService;
+            _unitOfWork = unitOfWork;
+            _regLogger = regLogger;
+            _loginLogger = loginLogger;
         }
 
         public IActionResult Index()
@@ -25,29 +33,27 @@ namespace SocialBets.Controllers
 
         public IActionResult Login()
         {
-            return View();
+            return View(new LoginModel(_unitOfWork.SignInManager, _loginLogger).Input);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginModel loginModel)
+        public async Task<IActionResult> Login(LoginModel.InputModel loginModel)
         {
-            if (loginModel.ModelState.IsValid)
+            ApplicationUser user = new ApplicationUser
             {
-                ApplicationUser user = new ApplicationUser
-                {
-                    Email = loginModel.Input.Email,
-                    Password = loginModel.Input.Password
-                };
+                UserName = loginModel.Email.Substring(0, loginModel.Email.IndexOf('@')),
+                Email = loginModel.Email,
+                Password = loginModel.Password
+            };
 
-                var loginResult = await _accountService.Login(user, loginModel.Input.RememberMe);
+            var loginResult = await _accountService.Login(user, loginModel.RememberMe);
 
-                if (loginResult.Succeeded)
-                {
-                    return RedirectToAction("Index", "Home");
-                }
+            if (loginResult.Succeeded)
+            {
+                return RedirectToAction("Index", "Home");
             }
 
-            return View();
+            return View(loginModel);
         }
 
         [HttpPost]
@@ -59,33 +65,24 @@ namespace SocialBets.Controllers
 
         public IActionResult Register()
         {
-            return View();
+            return View(new RegisterModel(_unitOfWork.UserManager, _unitOfWork.SignInManager, _regLogger).Input);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterModel registerModel)
+        public async Task<IActionResult> Register(RegisterModel.InputModel registerModel)
         {
-            if (registerModel.ModelState.IsValid)
+            ApplicationUser user = new ApplicationUser
             {
-                ApplicationUser user = new ApplicationUser
-                {
-                    Email = registerModel.Input.Email,
-                    Password = registerModel.Input.Password
-                };
+                UserName = registerModel.Email.Substring(0, registerModel.Email.IndexOf('@')),
+                Email = registerModel.Email,
+                Password = registerModel.Password
+            };
 
-                var regResult = await _accountService.Register(user);
+            var regResult = await _accountService.Register(user);
 
-                if (regResult.Succeeded)
-                {
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    foreach (var error in regResult.Errors)
-                    {
-                        registerModel.ModelState.AddModelError(string.Empty, error.Description);
-                    }
-                }
+            if (regResult.Succeeded)
+            {
+                return RedirectToAction("Index", "Home");
             }
 
             return View(registerModel);

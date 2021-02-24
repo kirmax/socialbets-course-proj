@@ -33,7 +33,6 @@ namespace SocialBets.Infrastructure.BusinessLogic
         public async Task AttachToBattle(Guid battleId, ClaimsPrincipal claimsUser)
         {
             var battle = await _unitOfWork.CurrentBattleRepository.GetItem(battleId);
-
             var user = await _unitOfWork.UserManager.GetUserAsync(claimsUser);
 
             if (user is null)

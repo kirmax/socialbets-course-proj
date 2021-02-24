@@ -18,8 +18,7 @@ namespace SocialBets.Infrastructure.BusinessLogic
 
         public async Task<SignInResult> Login(ApplicationUser user, bool isRememberMeEnabled)
         {
-            var result = await _unitOfWork.SignInManager.PasswordSignInAsync(user, user.Password, isRememberMeEnabled, false);
-            return result;
+            return await _unitOfWork.SignInManager.PasswordSignInAsync(user.UserName, user.Password, isRememberMeEnabled, false);
         }
 
         public async Task Logout()
@@ -51,8 +50,8 @@ namespace SocialBets.Infrastructure.BusinessLogic
 
         public async Task<bool> isUserExists(ApplicationUser user)
         {
-            var result = await _unitOfWork.UserManager.FindByNameAsync(user.UserName) ??
-                         await _unitOfWork.UserManager.FindByEmailAsync(user.Email);
+            var result = await _unitOfWork.UserManager.FindByEmailAsync(user.Email)
+                ?? (user.UserName != null ? await _unitOfWork.UserManager.FindByNameAsync(user.UserName) : null);
             return result != null;
         }
     }

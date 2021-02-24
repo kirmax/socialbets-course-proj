@@ -35,7 +35,6 @@ namespace SocialBets.Controllers
         {
             try
             {
-
                 await _battleService.CreateBattle(battle);
             }
             catch (Exception ex)
