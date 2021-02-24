@@ -3,5 +3,10 @@
 
 // Write your JavaScript code.
 $(document).ready(() => {
-   
+    const bets = document.getElementById('bets');
+    bets.onmouseover(() =>
+    {
+        alert("govno iz jopi");
+    }
+        );
 });

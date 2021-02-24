@@ -75,6 +75,7 @@ h1, h2, h3, h4, h5, h6 {
     background: #fff url("../img/preloader.svg") no-repeat center center;
 }
 
+
 /* Back to top button */
 .back-to-top {
     position: fixed;
@@ -1072,19 +1073,11 @@ body.mobile-nav-active {
 # Footer
 --------------------------------------------------------------*/
 #footer {
-    background: black;
-    padding: 1px 30px;
-    color: #fff;
-    font-size: 14px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    background-color: #000000;
+    text-align: center;
 }
-
-    #footer .copyright {
-        text-align: center;
-    }
-
-    #footer .credits {
-        padding-top: 10px;
-        text-align: center;
-        font-size: 13px;
-        color: #ccc;
-    }

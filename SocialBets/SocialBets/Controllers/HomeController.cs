@@ -20,7 +20,7 @@ namespace SocialBets.Controllers
 
         public IActionResult Index()
         {
-            return View("_PartialViewBattle");
+            return View("Index");
         }
 
         public IActionResult Privacy()
