@@ -2,3 +2,11 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+$(document).ready(() => {
+    const bets = document.getElementById('bets');
+    bets.onmouseover(() =>
+    {
+        alert("govno iz jopi");
+    }
+        );
+});
